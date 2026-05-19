@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pulau Senja — Match-3 Adventure</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bg-pattern" aria-hidden="true"></div>
+
+  <!-- Main Menu -->
+  <div class="screen screen-menu active" id="screen-menu">
+    <div class="menu-card">
+      <div class="logo">🍬</div>
+      <h1 class="game-title">Pulau Senja</h1>
+      <p class="game-tagline">Match-3 Petualangan Cahaya</p>
+      <button type="button" class="btn-candy btn-large" id="btn-play">Main Sekarang</button>
+      <button type="button" class="btn-candy btn-outline" id="btn-story-recap">Baca Cerita</button>
+      <div class="menu-progress">
+        <span>Level <strong id="menu-level">1</strong> / 12</span>
+        <div class="stars-total" id="menu-stars">☆☆☆</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Level Map -->
+  <div class="screen screen-map" id="screen-map">
+    <header class="map-header">
+      <button type="button" class="btn-icon" id="btn-map-back" aria-label="Kembali">←</button>
+      <h2>Peta Petualangan</h2>
+      <div class="map-stars" id="map-total-stars">0 ★</div>
+    </header>
+    <div class="map-path" id="level-map"></div>
+  </div>
+
+  <!-- Story Dialog -->
+  <div class="screen screen-story" id="screen-story">
+    <article class="story-panel">
+      <div class="story-chapter" id="story-chapter">Bab I</div>
+      <div class="story-avatar" id="story-avatar">🌅</div>
+      <h3 class="story-title" id="story-title">Bangun di Pantai</h3>
+      <p class="story-body" id="story-body"></p>
+      <button type="button" class="btn-candy btn-large" id="btn-story-continue">Lanjutkan</button>
+    </article>
+  </div>
+
+  <!-- Game -->
+  <div class="screen screen-game" id="screen-game">
+    <header class="game-hud">
+      <button type="button" class="btn-icon" id="btn-game-back" aria-label="Keluar">←</button>
+      <div class="hud-level">
+        <span class="hud-label">Level</span>
+        <span class="hud-value" id="hud-level-num">1</span>
+      </div>
+      <div class="hud-moves">
+        <span class="hud-label">Gerakan</span>
+        <span class="hud-value moves" id="hud-moves">20</span>
+      </div>
+      <div class="hud-score">
+        <span class="hud-label">Skor</span>
+        <span class="hud-value" id="hud-score">0</span>
+      </div>
+    </header>
+
+    <div class="objectives" id="objectives"></div>
+
+    <div class="board-wrap">
+      <div class="board" id="board" role="grid" aria-label="Papan permen"></div>
+    </div>
+
+    <div class="combo-display" id="combo-display" hidden></div>
+  </div>
+
+  <!-- Level Complete -->
+  <div class="overlay" id="overlay-level" hidden>
+    <div class="modal modal-win">
+      <div class="modal-icon" id="win-icon">🎉</div>
+      <h2 id="win-title">Level Selesai!</h2>
+      <p id="win-text">Kau mengumpulkan cahaya yang cukup!</p>
+      <div class="stars-result" id="win-stars">
+        <span class="star">★</span><span class="star dim">★</span><span class="star dim">★</span>
+      </div>
+      <p class="win-score">Skor: <strong id="win-score">0</strong></p>
+      <button type="button" class="btn-candy btn-large" id="btn-next-level">Level Berikutnya</button>
+      <button type="button" class="btn-candy btn-outline" id="btn-retry-level">Coba Lagi</button>
+    </div>
+  </div>
+
+  <!-- Level Failed -->
+  <div class="overlay" id="overlay-fail" hidden>
+    <div class="modal modal-fail">
+      <div class="modal-icon">😢</div>
+      <h2>Gerakan Habis!</h2>
+      <p>Mercusuar semakin redup... Coba lagi sebelum malam abadi datang.</p>
+      <button type="button" class="btn-candy btn-large" id="btn-retry-fail">Coba Lagi</button>
+      <button type="button" class="btn-candy btn-outline" id="btn-quit-fail">Ke Peta</button>
+    </div>
+  </div>
+
+  <!-- Ending -->
+  <div class="overlay" id="overlay-ending" hidden>
+    <div class="modal modal-ending">
+      <div class="modal-icon" id="ending-icon">🌞</div>
+      <h2 id="ending-title">Fajar Abadi</h2>
+      <p id="ending-text"></p>
+      <button type="button" class="btn-candy btn-large" id="btn-ending-menu">Kembali ke Menu</button>
+    </div>
+  </div>
+
+  <!-- Intro -->
+  <div class="overlay" id="overlay-intro">
+    <div class="modal">
+      <div class="modal-icon">🍬✨</div>
+      <h2>Selamat Datang!</h2>
+      <p>Kamu terdampar di <strong>Pulau Senja</strong>. Mercusuar hampir padam — kumpulkan permen cahaya dengan mencocokkan 3 atau lebih!</p>
+      <p class="modal-hint">Klik dua permen bersebelahan untuk menukar posisinya.</p>
+      <button type="button" class="btn-candy btn-large" id="btn-intro-start">Mulai Petualangan</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
